@@ -4,8 +4,11 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        runner: [ubuntu-latest, self-hosted]
+    runs-on: ${{ matrix.runner }}
 
     steps:
     - uses: actions/checkout@v2
